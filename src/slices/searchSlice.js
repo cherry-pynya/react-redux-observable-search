@@ -16,8 +16,11 @@ export const searchSlice = createSlice({
     setData: (state, action) => {
       state.data = action.payload;
     },
-    changeInputEmpty: (state) => {
-      state.inputEmpty = !state.inputEmpty;
+    inputEmptyTrue: (state) => {
+      state.inputEmpty = true;
+    },
+    inputEmptyFalse: (state) => {
+      state.inputEmpty = false;
     },
     statusPending: (state) => {
       state.status = PENDING;
@@ -39,6 +42,6 @@ export const searchEpic = action$ => action$.pipe(
   map(acttion => searchSlice.actions.setData(acttion.payload)),
 );
 
-export const { setData, changeInputEmpty, statusPending, statusSuccess, statusError } = searchSlice.actions;
+export const { setData, inputEmptyFalse, statusPending, statusSuccess, statusError, inputEmptyTrue } = searchSlice.actions;
 
 export default searchSlice.reducer;
